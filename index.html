@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>حاسبة العمر</title>
+</head>
+<body>
+    <h1>حاسبة العمر</h1>
+
+    <label for="birthdate">تاريخ الميلاد:</label>
+    <input type="date" id="birthdate">
+
+    <button onclick="calculateAge()">احسب العمر</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateAge() {
+            var birthDate = new Date(document.getElementById("birthdate").value);
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var monthDiff = today.getMonth() - birthDate.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            document.getElementById("result").innerHTML = "العمر هو: " + age + " سنة";
+        }
+    </script>
+</body>
+</html>
